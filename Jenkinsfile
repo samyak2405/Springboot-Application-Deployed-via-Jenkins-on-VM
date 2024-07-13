@@ -22,8 +22,8 @@ pipeline {
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
-                    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v ubuntu@192.168.64.2 'java -jar UserApp-0.0.1-SNAPSHOT.jar'
+                    scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/UserApplication/
+                    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v ubuntu@192.168.64.2 'bash /home/ubuntu/UserApplication/start.sh'
                     '''
                 }
             }
