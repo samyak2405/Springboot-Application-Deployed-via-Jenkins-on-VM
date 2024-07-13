@@ -22,8 +22,8 @@ pipeline {
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    scp -vvv UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
-                    ssh ubuntu@192.168.64.2 'sudo systemctl restart ecommstore-app'
+                    scp -o StrictHostKeyChecking=no -i /Users/samyakmoon/.ssh/id_rsa -vvv UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
+                    ssh -o StrictHostKeyChecking=no -i /Users/samyakmoon/.ssh/id_rsa ubuntu@192.168.64.2 'sudo systemctl restart ecommstore-app'
                     '''
                 }
             }
