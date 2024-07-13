@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshagent(['dfe54083-b74c-4c57-af30-1547b7d09fff']) {
+                sshagent(['ubuntu']) {
                     sh '''
                     scp target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
                     ssh ubuntu@192.168.64.2 'sudo systemctl restart ecommstore-app'
