@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    grsync -avz UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
+                    rsync -avz UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
                     ssh ubuntu@192.168.64.2 'sudo systemctl restart ecommstore-app'
                     '''
                 }
