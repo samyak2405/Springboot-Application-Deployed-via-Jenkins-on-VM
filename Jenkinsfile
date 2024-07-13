@@ -22,7 +22,9 @@ pipeline {
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    scp UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
+                    //scp UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
+                    //scp -o Compression=yes -o TCPKeepAlive=yes -o ServerAliveInterval=30 UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
+                    rsync -avz UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
                     ssh ubuntu@192.168.64.2 'sudo systemctl restart ecommstore-app'
                     '''
                 }
