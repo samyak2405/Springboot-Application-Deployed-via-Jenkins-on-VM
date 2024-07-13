@@ -23,7 +23,7 @@ pipeline {
                 sshagent(['ubuntu']) {
                     sh '''
                     scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v UserApp/target/UserApp-0.0.1-SNAPSHOT.jar ubuntu@192.168.64.2:/home/ubuntu/
-                    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@192.168.64.2 'export SUDO_ASKPASS=/home/ubuntu/askpass.sh && sudo -A systemctl restart ecommstore-app'
+                    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -v ubuntu@192.168.64.2 'export SUDO_ASKPASS=/home/ubuntu/askpass.sh && sudo -A systemctl restart ecommstore-app'
                     '''
                 }
             }
